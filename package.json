@@ -1,0 +1,21 @@
+{
+  "name": "Home-Radar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VisLaud/Home-Radar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VisLaud/Home-Radar/issues"
+  },
+  "homepage": "https://github.com/VisLaud/Home-Radar#readme"
+}
