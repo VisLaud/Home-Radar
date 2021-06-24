@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import * as ROUTES from "../constants/routes";
 
 export default function Signup() {
@@ -8,6 +9,10 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
+
+  const { signup } = useAuth();
+  const history = useHistory();
+
   const isInvalid =
     password === "" || email === "" || userName === "" || confirm === "";
 
@@ -15,15 +20,28 @@ export default function Signup() {
     document.title = "Signup - Home Radar";
   }, []);
 
-  const handleSignUp = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== confirm) {
+      return setError("Passwords do not match");
+    }
+    try {
+      setError("");
+      await signup(email, password, userName);
+      history.push("/favourite");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <div>
       <div>
         <h2>SignUp</h2>
+        {error && <h2>{error}</h2>}
       </div>
       <div>
-        <form method="POST">
+        <form method="POST" onSubmit={handleSubmit}>
           <label htmlFor="usernameInput">User Name</label>
           <input
             id="usernameInput"
@@ -70,7 +88,6 @@ export default function Signup() {
             className={`bg-blue-500 text-white w-80 rounded h-8 font-bold ${
               isInvalid && "opacity-50 cursor-not-allowed"
             }`}
-            onClick={handleSignUp}
           >
             Sign Up
           </button>

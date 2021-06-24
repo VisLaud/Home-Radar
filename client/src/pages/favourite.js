@@ -1,12 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { Link, useHistory, Redirect } from "react-router-dom";
 
 export default function Favourite() {
+  const [error, setError] = useState();
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+
   useEffect(() => {
     document.title = "Favourites";
   }, []);
+
+  const handleLogout = async () => {
+    setError("");
+    try {
+      await logout();
+      history.push("/login");
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+
   return (
     <div>
-      <h1>Favourite</h1>
+      <h1>Welcome {currentUser.displayName} to your profile </h1>
+      <Link to="/settings">Account Setting</Link>
+      <br />
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }

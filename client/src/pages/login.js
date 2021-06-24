@@ -1,23 +1,38 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import * as ROUTES from "../constants/routes";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const empty = !(email !== "" && password !== "");
+  const { login } = useAuth();
+  const history = useHistory();
   useEffect(() => {
     document.title = "Login - Home Radar";
   }, []);
 
-  const handleLogin = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setError("");
+      await login(email, password);
+      history.push("/favourite");
+    } catch (error) {
+      setError(error.message);
+      setPassword("");
+    }
+  };
   return (
     <div>
       <div>
         <h2>Login in</h2>
+        {error && <h2>{error}</h2>}
       </div>
       <div>
-        <form method="POST" onSubmit={handleLogin}>
+        <form method="POST" onSubmit={handleSubmit}>
           <label htmlFor="emailInput">Email</label>
           <input
             id="emailInput"

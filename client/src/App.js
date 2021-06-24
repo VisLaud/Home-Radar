@@ -1,5 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./pages/PrivateRoute";
 
 import * as ROUTES from "./constants/routes";
 
@@ -12,20 +14,22 @@ const Settings = lazy(() => import("./pages/settings.js"));
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Switch>
-            <Route path={ROUTES.LOGIN} component={Login} />
-            <Route path={ROUTES.SIGN_UP} component={SignUp} />
-            <Route path={ROUTES.FAVOURITE} component={Favourite} />
-            <Route path={ROUTES.SETTINGS} component={Settings} />
-            <Home />
-            <Route component={NotFound} />
-          </Switch>
-        </Suspense>
-      </Router>
-    </div>
+    <AuthProvider>
+      <div>
+        <Router>
+          <Suspense fallback={<p>Loading...</p>}>
+            <Switch>
+              <Route exact path={ROUTES.HOME} component={Home} />
+              <Route path={ROUTES.LOGIN} component={Login} />
+              <Route path={ROUTES.SIGN_UP} component={SignUp} />
+              <PrivateRoute path={ROUTES.FAVOURITE} component={Favourite} />
+              <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
+              <Route component={NotFound} />
+            </Switch>
+          </Suspense>
+        </Router>
+      </div>
+    </AuthProvider>
   );
 }
 
