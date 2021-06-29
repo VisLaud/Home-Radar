@@ -29,6 +29,24 @@ export function AuthProvider({ children }) {
     return auth.signOut();
   }
 
+  function resetPassword(email) {
+    return auth.sendPasswordResetEmail(email);
+  }
+
+  function updateEmail(email) {
+    return currentUser.updateEmail(email);
+  }
+
+  function updatePassword(password) {
+    return currentUser.updatePassword(password);
+  }
+
+  function updateUserName(userName) {
+    return currentUser.updateProfile({
+      displayName: userName,
+    });
+  }
+
   useEffect(() => {
     const unsubscirbe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -42,6 +60,10 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    resetPassword,
+    updateEmail,
+    updatePassword,
+    updateUserName,
   };
   return (
     <AuthContext.Provider value={value}>

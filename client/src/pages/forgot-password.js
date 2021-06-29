@@ -1,35 +1,35 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import * as ROUTES from "../constants/routes";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const empty = !(email !== "" && password !== "");
-  const { login } = useAuth();
-  const history = useHistory();
+  const [message, setMessage] = useState("");
+  const empty = !(email !== "");
+  const { resetPassword } = useAuth();
   useEffect(() => {
-    document.title = "Login - Home Radar";
+    document.title = "Reset Password";
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setError("");
-      await login(email, password);
-      history.push("/favourite");
+      setMessage("");
+      await resetPassword(email);
+      setMessage("Check your inbox for further instructions");
     } catch (error) {
       setError(error.message);
-      setPassword("");
     }
   };
   return (
     <div>
       <div>
-        <h2>Login in</h2>
+        <h2>Reset Password</h2>
         {error && <h2>{error}</h2>}
+        <div>{message}</div>
       </div>
       <div>
         <form method="POST" onSubmit={handleSubmit}>
@@ -43,16 +43,6 @@ export default function Login() {
               setEmail(target.value.toLowerCase());
             }}
           />
-          <label htmlFor="passwordInput">Password</label>
-          <input
-            id="passwordInput"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={({ target }) => {
-              setPassword(target.value);
-            }}
-          />
           <button
             disabled={empty}
             type="submit"
@@ -60,11 +50,11 @@ export default function Login() {
               empty && "cursor-not-allowed opacity-50"
             }`}
           >
-            Log In
+            Reset Password
           </button>
           <div>
-            <Link to="/forgot-password" className="font-bold text-blue-600">
-              <h2>Forgot Password?</h2>
+            <Link to="/login" className="font-bold text-blue-600">
+              <h2>Login</h2>
             </Link>
           </div>
         </form>
@@ -75,6 +65,7 @@ export default function Login() {
           Sign up
         </Link>
       </div>
+      <div>{message}</div>
     </div>
   );
 }

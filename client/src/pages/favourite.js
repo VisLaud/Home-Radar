@@ -24,9 +24,13 @@ export default function Favourite() {
   return (
     <div>
       <h1>Welcome {currentUser.displayName} to your profile </h1>
-      <Link to="/settings">Account Setting</Link>
+      <Link to="/settings" className="font-bold text-blue-600">
+        Account Setting
+      </Link>
       <br />
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout} className="font-bold text-blue-600">
+        Logout
+      </button>
     </div>
   );
 }
