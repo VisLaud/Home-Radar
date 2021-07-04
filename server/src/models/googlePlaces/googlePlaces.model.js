@@ -1,24 +1,6 @@
 const axios = require("axios");
 
-const URL = "https://swapi.dev/api/people/1";
-
-const user = {
-  name: "Simanta Thapa",
-  email: "ximantathapa@gmail.com",
-  favorites: [
-    {
-      address: "SJSU",
-      long: "1232",
-      lat: "5345",
-    },
-    {
-      address: "Fort mill",
-      long: "75665",
-      lat: "3456",
-    },
-  ],
-};
-async function getAllUsers() {
+async function getAllRestaurants() {
   const key = "AIzaSyAQBePHvtMlPw97zNwTjHuIiSje19lD3wU";
   const neighborhood = "chelsea";
   const borough = "manhattan";
@@ -35,6 +17,16 @@ async function getAllUsers() {
   return names;
 }
 
+async function getPlace(state, city) {
+  if (!state || !city) {
+    return {
+      error: 404,
+      message: "bad search query",
+    };
+  } else return { state, city };
+}
+
 module.exports = {
-  getAllUsers,
+  getAllRestaurants,
+  getPlace,
 };

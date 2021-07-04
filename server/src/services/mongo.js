@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const MONGO_URL =
-  "mongodb+srv://sam:sam@cluster0.xhkps.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const MONGO_URL = process.env.MONGO_URL;
 
 mongoose.connection.once("open", () => {
   console.log("Mongodb connection ready!");

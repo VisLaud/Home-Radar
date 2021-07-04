@@ -7,7 +7,6 @@ export default function Settings() {
   const { currentUser, updatePassword, updateEmail, updateUserName } =
     useAuth();
   const [userName, setUserName] = useState(currentUser.displayName);
-  const [email, setEmail] = useState(currentUser.email);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
@@ -27,9 +26,6 @@ export default function Settings() {
 
     setError("");
     const promises = [];
-    if (email !== currentUser.email) {
-      promises.push(updateEmail(email));
-    }
     if (userName !== currentUser.displayName) {
       promises.push(updateUserName(userName));
     }
@@ -61,16 +57,6 @@ export default function Settings() {
             value={userName}
             onChange={({ target }) => {
               setUserName(target.value.toLowerCase());
-            }}
-          />
-          <label htmlFor="emailInput">Email: </label>
-          <input
-            id="emailInput"
-            type="text"
-            placeholder="Email Address"
-            value={email}
-            onChange={({ target }) => {
-              setEmail(target.value.toLowerCase());
             }}
           />
           <label htmlFor="passwordInput">Password</label>

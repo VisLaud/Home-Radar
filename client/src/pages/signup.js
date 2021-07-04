@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import * as ROUTES from "../constants/routes";
+import { registerUser } from "../services/requests";
 
 export default function Signup() {
   const [userName, setUserName] = useState("");
@@ -10,7 +11,7 @@ export default function Signup() {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
 
-  const { signup } = useAuth();
+  const { signup, currentUser, login } = useAuth();
   const history = useHistory();
 
   const isInvalid =
@@ -28,8 +29,10 @@ export default function Signup() {
     try {
       setError("");
       await signup(email, password, userName);
+      await registerUser({ email });
       history.push("/favourite");
     } catch (error) {
+      console.log("error lole");
       setError(error.message);
     }
   };

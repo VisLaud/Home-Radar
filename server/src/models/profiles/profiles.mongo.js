@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 
 const userProfileSchema = new mongoose.Schema({
-    displayName: {
-        type: String, required: true
-    }
+  email: {
+    type: String,
+    required: true,
+  },
 });
+
+module.exports = mongoose.model("Profile", userProfileSchema);
 
 /*const postSchema = mongoose.Schema({
   employeeid: { type: Number, default: 0 },
