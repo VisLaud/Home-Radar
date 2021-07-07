@@ -1,13 +1,13 @@
 const { getYelp } = require("../../models/yelp/yelp.model");
 
 async function httpGetYelp(req, res) {
-  const { term, cityName } = req.query;
-  if (!term || cityName) {
+  const { term, location } = req.query;
+  if (!term || !location) {
     return res.status(400).json({
       error: "Missing required user properties",
     });
   }
-  return res.json(await getYelp(term, cityName));
+  return res.json(await getYelp(term, location));
 }
 
 module.exports = {

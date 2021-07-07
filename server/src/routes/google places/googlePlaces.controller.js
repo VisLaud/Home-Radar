@@ -4,7 +4,8 @@ const {
 } = require("../../models/googlePlaces/googlePlaces.model");
 
 async function httpGetAllRestaurants(req, res) {
-  return res.status(200).json(await getAllRestaurants());
+  const { lat, lng, radius, type } = req.query;
+  return res.status(200).json(await getAllRestaurants(lat, lng, radius, type));
 }
 
 async function httpGetPlace(req, res) {
