@@ -8,9 +8,7 @@ async function httpGetAllRestaurants(req, res) {
 }
 
 async function httpGetPlace(req, res) {
-  console.log(req.query);
   const { state, city } = req.query;
-  console.log(state, city);
   return res.json(await getPlace(state, city));
 }
 

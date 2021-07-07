@@ -32,7 +32,6 @@ export default function Signup() {
       await registerUser({ email });
       history.push("/favourite");
     } catch (error) {
-      console.log("error lole");
       setError(error.message);
     }
   };
