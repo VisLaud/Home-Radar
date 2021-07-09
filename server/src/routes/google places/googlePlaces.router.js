@@ -2,12 +2,9 @@ const express = require("express");
 
 const googlePlacesRouter = express.Router();
 
-const {
-  httpGetAllRestaurants,
-  httpGetPlace,
-} = require("./googlePlaces.controller");
+const { httpGetAllTypes } = require("./googlePlaces.controller");
 
-googlePlacesRouter.get("/", httpGetAllRestaurants);
-googlePlacesRouter.get("/restaurants", httpGetPlace);
+googlePlacesRouter.get("/", httpGetAllTypes);
+//googlePlacesRouter.get("/restaurants", httpGetPlace);
 
 module.exports = googlePlacesRouter;

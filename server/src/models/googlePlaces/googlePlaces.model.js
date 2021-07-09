@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-async function getAllRestaurants(lat, lng, radius, type) {
+async function getAllTypes(lat, lng, radius, type) {
   const key = "AIzaSyAQBePHvtMlPw97zNwTjHuIiSje19lD3wU";
   const names = [];
   await axios
@@ -13,16 +13,6 @@ async function getAllRestaurants(lat, lng, radius, type) {
   return names;
 }
 
-async function getPlace(state, city) {
-  if (!state || !city) {
-    return {
-      error: 404,
-      message: "bad search query",
-    };
-  } else return { state, city };
-}
-
 module.exports = {
-  getAllRestaurants,
-  getPlace,
+  getAllTypes,
 };
