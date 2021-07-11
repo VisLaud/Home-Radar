@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Favourite() {
   const [error, setError] = useState();
@@ -15,7 +15,7 @@ export default function Favourite() {
     setError("");
     try {
       await logout();
-      history.push("/login");
+      history.push("/account");
     } catch (e) {
       setError(e.message);
     }

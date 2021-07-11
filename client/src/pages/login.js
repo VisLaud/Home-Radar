@@ -26,54 +26,60 @@ export default function Login() {
     }
   };
   return (
-    <div>
-      <div>
-        <h2>Login in</h2>
-        {error && <h2>{error}</h2>}
+    <div className="flex bg-blue-400 w-screen h-screen ">
+      <div className="flex-1 bg-yellow-300 ">
+        <h1>Image</h1>
       </div>
-      <div>
-        <form method="POST" onSubmit={handleSubmit}>
-          <label htmlFor="emailInput">Email</label>
-          <input
-            id="emailInput"
-            type="text"
-            placeholder="Email Address"
-            value={email}
-            onChange={({ target }) => {
-              setEmail(target.value.toLowerCase());
-            }}
-          />
-          <label htmlFor="passwordInput">Password</label>
-          <input
-            id="passwordInput"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={({ target }) => {
-              setPassword(target.value);
-            }}
-          />
-          <button
-            disabled={empty}
-            type="submit"
-            className={`bg-blue-500 text-white w-80 rounded h-8 font-bold ${
-              empty && "cursor-not-allowed opacity-50"
-            }`}
-          >
-            Log In
-          </button>
+      <div className="w-4/12 bg-white flex container">
+        <div>
+          <h2 className="flex-col">Login in</h2>
+          {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
+          <div className="flex-col">
+            <form method="POST" onSubmit={handleSubmit}>
+              <label htmlFor="emailInput">Email</label>
+              <input
+                className="text-sm text-gray w-4/12 mr-3 py-5 px-4 h-2 border bg-gray-background rounded mb-2"
+                id="emailInput"
+                type="text"
+                placeholder="Email Address"
+                value={email}
+                onChange={({ target }) => {
+                  setEmail(target.value.toLowerCase());
+                }}
+              />
+              <label htmlFor="passwordInput">Password</label>
+              <input
+                id="passwordInput"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={({ target }) => {
+                  setPassword(target.value);
+                }}
+              />
+              <button
+                disabled={empty}
+                type="submit"
+                className={`bg-blue-500 text-white w-80 rounded h-8 font-bold ${
+                  empty && "cursor-not-allowed opacity-50"
+                }`}
+              >
+                Log In
+              </button>
+              <div>
+                <Link to="/forgot-password" className="font-bold text-blue-600">
+                  <h2>Forgot Password?</h2>
+                </Link>
+              </div>
+            </form>
+          </div>
           <div>
-            <Link to="/forgot-password" className="font-bold text-blue-600">
-              <h2>Forgot Password?</h2>
+            Don't have an account?{" "}
+            <Link to={ROUTES.SIGN_UP} className="font-bold text-blue-600">
+              Sign up
             </Link>
           </div>
-        </form>
-      </div>
-      <div>
-        Don't have an account?{" "}
-        <Link to={ROUTES.SIGN_UP} className="font-bold text-blue-600">
-          Sign up
-        </Link>
+        </div>
       </div>
     </div>
   );
