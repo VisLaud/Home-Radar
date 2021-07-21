@@ -161,3 +161,26 @@ body {
 .top-section {
   background-color: rgb(196, 181, 253);
 }
+
+.save-btn {
+  background-color: rgb(196, 181, 253);
+  background-size: 30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  margin: 10px;
+  color: rgb(105, 32, 3);
+  height: 50px;
+  width: 100%;
+  vertical-align: middle;
+  outline: none;
+  text-align: center;
+  font-family: "Righteous", serif;
+  color: white;
+  font-size: 2vw;
+}
+
+.save-btn:hover {
+  background-color: rgb(168, 148, 250);
+  color: black;
+}
