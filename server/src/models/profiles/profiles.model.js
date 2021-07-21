@@ -3,26 +3,6 @@ const userProfileDatabase = require("./profiles.mongo");
 
 const URL = "";
 
-const user = {
-  name: "Simanta Thapa",
-  email: "ximantathapa@gmail.com",
-  favorites: [
-    {
-      address: "SJSU",
-      long: "1232",
-      lat: "5345",
-    },
-    {
-      address: "Fort mill",
-      long: "75665",
-      lat: "3456",
-    },
-  ],
-};
-async function getAllUsers() {
-  return user;
-}
-
 async function registerNewUser(profile) {
   await userProfileDatabase.findOneAndUpdate(
     {
@@ -34,8 +14,29 @@ async function registerNewUser(profile) {
     }
   );
 }
+async function getAllUsers(email) {
+  return await userProfileDatabase.find({ email });
+}
+
+async function addALocation(email, location) {
+  let bookmark = [];
+  await userProfileDatabase.findOne({ email }, function (err, result) {
+    bookmark = result.bookmark;
+  });
+  bookmark = bookmark.filter((a) => {
+    if (a !== location) {
+      return a;
+    }
+  });
+  await userProfileDatabase.updateOne(
+    { email },
+    { bookmark: [...bookmark, location] }
+  );
+  return { bookmark };
+}
 
 module.exports = {
   getAllUsers,
   registerNewUser,
+  addALocation,
 };

@@ -5,6 +5,7 @@ const userProfileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  bookmark: [String],
 });
 
 module.exports = mongoose.model("Profile", userProfileSchema);

@@ -1,0 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+.logo {
+  display: inline-block;
+  width: calc(66.59vw);
+  text-align: center;
+  color: white;
+  font-family: "Righteous", serif;
+  font-size: 7em;
+  text-shadow: 0.03em 0.03em 0 #cbc3e3;
+}

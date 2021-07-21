@@ -1,5 +1,5 @@
 const axios = require("axios");
-const API_URL = "http://localhost:8000";
+const API_URL = "https://home-radar.herokuapp.com";
 
 async function registerUser(profile) {
   try {
