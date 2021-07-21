@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import * as ROUTES from "../constants/routes";
-
 
 export default function Settings() {
-  const { currentUser, updatePassword, updateEmail, updateUserName, logout } =
-    useAuth();
+  const { currentUser, updatePassword, updateUserName, logout } = useAuth();
   const [userName, setUserName] = useState(currentUser.displayName);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");

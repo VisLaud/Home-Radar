@@ -1,0 +1,163 @@
+body {
+  margin: 0px;
+}
+
+.header {
+  text-align: center;
+  height: 10%;
+}
+
+.header-name {
+  display: inline-block;
+  width: calc(60vw);
+  color: white;
+  font-family: "Righteous", serif;
+  font-size: 5em;
+  text-shadow: 0.03em 0.03em 0 #cbc3e3;
+  margin: 10px;
+}
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+.caption {
+  font-family: "Righteous", serif;
+  background-color: rgb(196, 181, 253);
+  text-shadow: 0.03em 0.03em 0 #cbc3e3;
+  padding-left: 10px;
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+}
+
+.radar-container {
+  padding-top: 10px;
+}
+
+.search-block {
+  width: 100%;
+  height: 50%;
+  grid-row: 1;
+  background-color: rgb(196, 181, 253);
+}
+
+.search-form {
+  text-align: center;
+  vertical-align: middle;
+  height: 350px;
+  position: relative;
+  background-image: url("https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-position-y: -575px;
+  background-repeat: no-repeat;
+}
+
+.search-bar {
+  text-align: center;
+  font-size: 1vw;
+  font-family: "Righteous", serif;
+  font-weight: bolder;
+  border-radius: 30px;
+  border-top-color: coral;
+  border-bottom-color: darksalmon;
+  height: 50px;
+  width: 720px;
+  vertical-align: middle;
+  outline: none;
+  position: relative;
+}
+
+.search-btn {
+  background-color: rgb(196, 181, 253);
+  background-image: url("./SearchIcon/search-icon.png");
+  background-size: 30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  margin: 10px;
+  color: rgb(105, 32, 3);
+  height: 50px;
+  width: 75px;
+  vertical-align: middle;
+  outline: none;
+}
+
+.search-btn:hover {
+  background-color: rgb(145, 117, 255);
+  background-size: 40px 40px;
+}
+
+.map {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.data-table {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.selector-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 500px;
+}
+
+.range-selector {
+  margin-left: 0;
+  margin-right: 10%;
+  font-size: large;
+  font-family: "Righteous", serif;
+  background-image: linear-gradient(45deg, rgb(196, 181, 253), pink);
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border-color: transparent;
+}
+
+.range-selector:hover {
+  background-image: linear-gradient(
+    45deg,
+    rgb(196, 181, 253),
+    rgb(145, 117, 255)
+  );
+}
+
+.range-option {
+  font-family: "Righteous", serif;
+  background-color: rgb(226, 219, 255);
+  border-color: transparent;
+}
+
+.type-selector {
+  background-image: linear-gradient(45deg, rgb(196, 181, 253), pink);
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border-color: transparent;
+  font-size: large;
+  font-family: "Righteous", serif;
+}
+
+.type-selector:hover {
+  background-image: linear-gradient(
+    45deg,
+    rgb(196, 181, 253),
+    rgb(145, 117, 255)
+  );
+}
+
+.type-option {
+  font-family: "Righteous", serif;
+  background-color: rgb(226, 219, 255);
+  border-color: transparent;
+}
+
+.top-section {
+  background-color: rgb(196, 181, 253);
+}

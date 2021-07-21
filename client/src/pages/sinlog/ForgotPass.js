@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+
 import { useAuth } from "../../context/AuthContext";
-import * as ROUTES from "../../constants/routes";
 
 export default function ForgotPass({ curr, forgot }) {
   const [email, setEmail] = useState("");

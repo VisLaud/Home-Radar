@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import * as ROUTES from "../../constants/routes";
 import { registerUser } from "../../services/requests";
 
 export default function Signin({ curr }) {
@@ -11,7 +10,7 @@ export default function Signin({ curr }) {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
 
-  const { signup, currentUser, login } = useAuth();
+  const { signup } = useAuth();
   const history = useHistory();
 
   const isInvalid =

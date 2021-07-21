@@ -4,8 +4,9 @@ import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./pages/PrivateRoute";
 
 import * as ROUTES from "./constants/routes";
+import HomePage from "./HomePage/Pages/HomePage";
 
-const Home = lazy(() => import("./pages/home"));
+//const HomePage = lazy(() => import("./HomePage/Pages/index"));
 const Login = lazy(() => import("./pages/login"));
 const SignUp = lazy(() => import("./pages/signup"));
 const Favourite = lazy(() => import("./pages/favourite"));
@@ -21,7 +22,7 @@ function App() {
         <Router>
           <Suspense fallback={<p>Loading...</p>}>
             <Switch>
-              <Route exact path={ROUTES.HOME} component={Home} />
+              <Route exact path={ROUTES.HOME} component={HomePage} />
               <Route path={ROUTES.LOGIN} component={Login} />
               <Route path={ROUTES.SIGN_UP} component={SignUp} />
               <Route path={ROUTES.SIN_LOG} component={SinLog} />

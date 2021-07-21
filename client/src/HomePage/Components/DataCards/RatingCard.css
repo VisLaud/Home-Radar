@@ -1,0 +1,28 @@
+.rating-card {
+  width: 300px;
+  height: 370px;
+  margin: 10px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hr {
+  background-color: rgb(236, 163, 163);
+}
+
+.sr {
+  background-color: rgb(165, 165, 241);
+}
+
+.rr {
+  background-color: burlywood;
+}
+
+.pr {
+  background-color: rgb(152, 223, 152);
+}
+
+.gr {
+  background-color: rgb(233, 233, 119);
+}
