@@ -44,7 +44,7 @@ export default function Settings() {
     setError("");
     try {
       await logout();
-      history.push("/account");
+      history.push("/");
     } catch (e) {
       setError(e.message);
     }
@@ -61,7 +61,7 @@ export default function Settings() {
           </div>
           <div className="w-full text-center text-2xl hover:bg-purple-200 p-8 ">
             <Link to="/favourite" className="font-bold p-8">
-              Favourites
+              Bookmarks
             </Link>
           </div>
           <div className=" bg-purple-200 text-center p-8 shadow-md ">

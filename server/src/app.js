@@ -9,7 +9,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [
+      "https://home-radar.netlify.app",
+      "http://localhost:3000",
+      "http://localhost:5000",
+    ],
   })
 );
 

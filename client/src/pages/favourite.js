@@ -12,7 +12,7 @@ export default function Favourite() {
   const history = useHistory();
 
   useEffect(() => {
-    document.title = "Favourites";
+    document.title = "Bookmarks";
     axios(
       `https://home-radar.herokuapp.com/profiles?email=${currentUser.email}`
     ).then((res) => {
@@ -48,7 +48,7 @@ export default function Favourite() {
     setError("");
     try {
       await logout();
-      history.push("/account");
+      history.push("/");
     } catch (e) {
       setError(e.message);
     }
@@ -65,7 +65,7 @@ export default function Favourite() {
           </div>
           <div className="w-full text-center text-2xl bg-purple-200 p-8 shadow-md">
             <Link to="/favourite" className="font-bold p-8">
-              Favourites
+              Bookmarks
             </Link>
           </div>
           <div className=" hover:bg-purple-200 text-center p-8 ">
@@ -83,13 +83,17 @@ export default function Favourite() {
           </button>
         </div>
       </div>
-      <div className="w-10/12 p-10 bg-yellow-50">
-        <div className="text-xl bg-pink-500 mb-10">
-          <h1>Welcome {currentUser.displayName} to your profile </h1>
-          <h1>Favourites</h1>
+      <div className="w-10/12 p-10">
+        <div className="text-2xl mb-10 text-center w-auto">
+          <h1>
+            welcome {currentUser.displayName.toUpperCase()} to your profile{" "}
+          </h1>
         </div>
-        <div className="text-2xl bg-red-500 grid grid grid-flow-col grid-cols-3 grid-rows-3 gap-4">
-          {renderLocation()}
+        <div className="text-2xl font-medium ">
+          <h1>Bookmark</h1>
+        </div>
+        <div className="text-2xl bg-yellow-50 w-full text-center text-gray-400 font-mono">
+          {"Empty"}
         </div>
       </div>
     </div>
