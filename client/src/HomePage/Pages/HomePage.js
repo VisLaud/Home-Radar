@@ -117,16 +117,20 @@ function HomePage(props) {
         return <RatingCard hospital_rating={hospital_rating} school_rating={school_rating} restaurant_rating={restaurant_rating} park_rating={park_rating} gym_rating={gym_rating} crime_rate={cr}></RatingCard>
     }
 
+    /*
     //save the post
     const savePost = (e) => {
         e.preventDefault();
         alert('Sam, save the post at ./Client/src/HomePage/Pages/HomePage.js Line: 123')
     }
-
+    */
     return (
         <>
             <div className='home-page'>
                 <div className='top-section'>
+                    <div className='login-signup-btn'>
+                        <Link to='./account' className='login-btn'>login</Link>
+                    </div>
                     <div className='radar-container'>
                         <Radar></Radar>
                     </div>
@@ -175,10 +179,7 @@ function HomePage(props) {
                     {Data && pinMarkers(Data)}
                 </Map>
                 </div>
-                {MapConfig.coordinates &&
-                    <div className='save-container'>
-                        <button className='save-btn' onClick={savePost}>Save Your Search</button>
-                    </div>}
+
                 {Data &&
                     <div className='data-table'>
                         {Data && result(Data)}
@@ -221,3 +222,10 @@ const GM = GoogleApiWrapper({
 })(HomePage)
 
 export default GM;
+
+/*
+{MapConfig.coordinates &&
+                    <div className='save-container'>
+                        <button className='save-btn' onClick={savePost}>Save Your Search</button>
+                    </div>}
+                    */

@@ -47,6 +47,7 @@ body {
   background-image: url("https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-position-y: -575px;
   background-repeat: no-repeat;
+  background-size: auto;
 }
 
 .search-bar {
@@ -183,4 +184,14 @@ body {
 .save-btn:hover {
   background-color: rgb(168, 148, 250);
   color: black;
+}
+
+.login-signup-btn {
+  text-align: right;
+  padding: 10px;
+  outline: none;
+}
+
+.login-btn:hover {
+  color: blue;
 }
