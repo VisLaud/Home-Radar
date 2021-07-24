@@ -13,6 +13,8 @@ import {
   GetCrimeRate,
 } from "../Components/index";
 
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+
 function HomePage(props) {
   const { currentUser } = useAuth();
   const [MapConfig, SetConfig] = useState({ zoom: 15 });
@@ -167,13 +169,16 @@ function HomePage(props) {
     );
   };
 
-  /*
-    //save the post
-    const savePost = (e) => {
-        e.preventDefault();
-        alert('Sam, save the post at ./Client/src/HomePage/Pages/HomePage.js Line: 123')
-    }
-    */
+  //save the post
+  //button css is in HomePage.css line: 166
+  const savePost = (e) => {
+    e.preventDefault();
+    //where the address in the text bar is kept
+    alert(UserInput.input)
+
+    alert('Sam, save the post at ./Client/src/HomePage/Pages/HomePage.js function name "savePost" Line: 174')
+  }
+
   return (
     <>
       <div className="home-page">
@@ -258,7 +263,9 @@ function HomePage(props) {
             {Data && pinMarkers(Data)}
           </Map>
         </div>
-
+        {MapConfig.coordinates && <div className='save-container'>
+          <button className='save-btn' onClick={savePost}><BookmarkIcon /></button>
+        </div>}
         {Data && <div className="data-table">{Data && result(Data)}</div>}
         {h && r && s && g && p && (
           <>
@@ -285,10 +292,3 @@ const GM = GoogleApiWrapper({
 })(HomePage);
 
 export default GM;
-
-/*
-{MapConfig.coordinates &&
-                    <div className='save-container'>
-                        <button className='save-btn' onClick={savePost}>Save Your Search</button>
-                    </div>}
-                    */
