@@ -13,4 +13,15 @@ async function registerUser(profile) {
   }
 }
 
-export { registerUser };
+async function addBookmark(bookmark) {
+  try {
+    return await axios.post(`${API_URL}/profiles/favorites`, bookmark);
+  } catch (err) {
+    console.log(err);
+    return {
+      status: false,
+    };
+  }
+}
+
+export { registerUser, addBookmark };

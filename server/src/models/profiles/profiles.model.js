@@ -18,19 +18,19 @@ async function getAllUsers(email) {
   return await userProfileDatabase.find({ email });
 }
 
-async function addALocation(email, location) {
+async function addALocation(email, location, city) {
   let bookmark = [];
   await userProfileDatabase.findOne({ email }, function (err, result) {
     bookmark = result.bookmark;
   });
   bookmark = bookmark.filter((a) => {
-    if (a !== location) {
+    if (a.location !== location) {
       return a;
     }
   });
   await userProfileDatabase.updateOne(
     { email },
-    { bookmark: [...bookmark, location] }
+    { bookmark: [...bookmark, { location, city }] }
   );
   return { bookmark };
 }

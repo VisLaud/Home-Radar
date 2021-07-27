@@ -2,8 +2,8 @@ import Geocode from "react-geocode";
 //convert address to geocode
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 
-const GetState = async (coord) => {
-  let state = "";
+export const GetCity = async (coord) => {
+  let city = "";
   await Geocode.fromLatLng(coord.lat, coord.lng).then(
     (response) => {
       for (let i = 0; i < response.results[0].address_components.length; i++) {
@@ -13,8 +13,8 @@ const GetState = async (coord) => {
           j++
         ) {
           switch (response.results[0].address_components[i].types[j]) {
-            case "administrative_area_level_1":
-              state = response.results[0].address_components[i].short_name;
+            case "locality":
+              city = response.results[0].address_components[i].long_name;
               break;
           }
         }
@@ -25,7 +25,7 @@ const GetState = async (coord) => {
     }
   );
 
-  return state;
+  return city;
 };
 
-export default GetState;
+export default GetCity;

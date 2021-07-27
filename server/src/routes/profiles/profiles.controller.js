@@ -15,13 +15,14 @@ async function httpGetAllUsers(req, res) {
 }
 
 async function httpAddLocation(req, res) {
-  const { email, location } = req.query;
-  if (!email || !location) {
+  const { email, location, city } = req.body;
+  if (!email || !location || !city) {
     return res.status(400).json({
       error: "Bad query parameter",
     });
   }
-  return res.status(200).json(await addALocation(email, location));
+  await addALocation(email, location, city);
+  return res.status(200).json({ email, location, city });
 }
 
 async function httpRegisterUser(req, res) {

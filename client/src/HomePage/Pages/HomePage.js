@@ -11,9 +11,11 @@ import {
   RatingCard,
   GetState,
   GetCrimeRate,
+  GetCity,
 } from "../Components/index";
 
-import BookmarkIcon from '@material-ui/icons/Bookmark';
+import BookmarkIcon from "@material-ui/icons/Bookmark";
+import { addBookmark } from "../../services/requests";
 
 function HomePage(props) {
   const { currentUser } = useAuth();
@@ -171,13 +173,18 @@ function HomePage(props) {
 
   //save the post
   //button css is in HomePage.css line: 166
-  const savePost = (e) => {
+  const savePost = async (e) => {
     e.preventDefault();
-    //where the address in the text bar is kept
-    alert(UserInput.input)
+    await GetCity(MapConfig.coordinates).then((res) =>
+      addBookmark({
+        location: UserInput.input,
+        email: currentUser.email,
+        city: res,
+      })
+    );
 
-    alert('Sam, save the post at ./Client/src/HomePage/Pages/HomePage.js function name "savePost" Line: 174')
-  }
+    //where the address in the text bar is kept
+  };
 
   return (
     <>
@@ -263,9 +270,13 @@ function HomePage(props) {
             {Data && pinMarkers(Data)}
           </Map>
         </div>
-        {MapConfig.coordinates && <div className='save-container'>
-          <button className='save-btn' onClick={savePost}><BookmarkIcon /></button>
-        </div>}
+        {MapConfig.coordinates && currentUser && (
+          <div className="save-container">
+            <button className="save-btn" onClick={savePost}>
+              <BookmarkIcon />
+            </button>
+          </div>
+        )}
         {Data && <div className="data-table">{Data && result(Data)}</div>}
         {h && r && s && g && p && (
           <>
