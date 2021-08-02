@@ -176,6 +176,19 @@ body {
   margin-right: 50%;
 }
 
+.saved-btn {
+  background-color: rgb(131, 252, 51);
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  margin: 10px;
+  outline: none;
+  color: white;
+  position: relative;
+  margin-left: 50%;
+  margin-right: 50%;
+}
+
 .save-btn:hover {
   background-color: rgb(168, 148, 250);
   color: rgb(117, 86, 241);

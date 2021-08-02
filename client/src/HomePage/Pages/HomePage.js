@@ -13,8 +13,9 @@ import {
   GetCrimeRate,
   GetCity,
 } from "../Components/index";
-
+import DoneOutlineSharpIcon from "@material-ui/icons/DoneOutlineSharp";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
+import DoneIcon from "@material-ui/icons/Done";
 import { addBookmark } from "../../services/requests";
 
 function HomePage(props) {
@@ -26,6 +27,7 @@ function HomePage(props) {
     type: "default: All",
   });
   const [Data, SetData] = useState();
+  const [saved, setSaved] = useState(false);
 
   const [r, SetR] = useState();
   const [s, SetS] = useState();
@@ -175,6 +177,7 @@ function HomePage(props) {
   //button css is in HomePage.css line: 166
   const savePost = async (e) => {
     e.preventDefault();
+    setSaved(true);
     await GetCity(MapConfig.coordinates).then((res) =>
       addBookmark({
         location: UserInput.input,
@@ -272,9 +275,15 @@ function HomePage(props) {
         </div>
         {MapConfig.coordinates && currentUser && (
           <div className="save-container">
-            <button className="save-btn" onClick={savePost}>
-              <BookmarkIcon />
-            </button>
+            {saved ? (
+              <button className="saved-btn">
+                <DoneOutlineSharpIcon />
+              </button>
+            ) : (
+              <button className="save-btn" onClick={savePost}>
+                <BookmarkIcon />
+              </button>
+            )}
           </div>
         )}
         {Data && <div className="data-table">{Data && result(Data)}</div>}
