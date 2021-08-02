@@ -11,5 +11,4 @@ const {
 profilesRouter.get("/", httpGetAllUsers);
 profilesRouter.post("/", httpRegisterUser);
 profilesRouter.post("/favorites", httpAddLocation);
-
 module.exports = profilesRouter;

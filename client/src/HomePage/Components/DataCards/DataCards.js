@@ -30,7 +30,7 @@ const DataCards = ({
         </div>
         <CardMedia
           className="CardMedia"
-          image={defaultImgUrl}
+          image={photo_reference ? url : defaultImgUrl}
           title="image"
         ></CardMedia>
         <Typography

@@ -15,7 +15,9 @@ async function registerNewUser(profile) {
   );
 }
 async function getAllUsers(email) {
-  return await userProfileDatabase.find({ email });
+  const user = await userProfileDatabase.find({ email });
+  console.log(user);
+  return user[0].bookmark;
 }
 
 async function addALocation(email, location, city) {

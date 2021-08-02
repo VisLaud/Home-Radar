@@ -16,19 +16,25 @@ export default function Favourite() {
     axios(
       `https://home-radar.herokuapp.com/profiles?email=${currentUser.email}`
     ).then((res) => {
-      setLocation(res.data[0].bookmark);
+      setLocation(res.data);
     });
   }, []);
-
-  console.log(location);
 
   const renderLocation = () => {
     if (location) {
       if (location.length === 0) {
-        return <h1>Empty</h1>;
+        return (
+          <div className="text-2xl bg-yellow-50 w-full text-center text-gray-400 font-mono">
+            {"Empty"}
+          </div>
+        );
       } else {
         return location.map((loc, index) => (
-          <Bookmark name={"1400 the woods drive"} city={"San Jose"} />
+          <Bookmark
+            key={index}
+            name={loc.location.toUpperCase()}
+            city={loc.city}
+          />
         ));
       }
     } else return <Skeleton count={8} width={320} height={400} />;
@@ -89,11 +95,11 @@ export default function Favourite() {
             welcome {currentUser.displayName.toUpperCase()} to your profile{" "}
           </h1>
         </div>
-        <div className="text-2xl font-medium ">
-          <h1>Bookmark</h1>
+        <div className="text-2xl font-medium mb-10 ">
+          <h1>Bookmarks</h1>
         </div>
-        <div className="text-2xl bg-yellow-50 w-full text-center text-gray-400 font-mono">
-          {"Empty"}
+        <div className="text-3xl text-gray-400 font-mono text-center ">
+          <div className="">{renderLocation()}</div>
         </div>
       </div>
     </div>

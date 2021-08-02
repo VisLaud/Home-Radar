@@ -3,6 +3,25 @@ import axios from "axios";
 
 function Bookmark({ name, city }) {
   const [image, setImage] = useState();
+
+  function randomColor() {
+    var colors = [
+      "#CB3301",
+      "#FF0066",
+      "#FF6666",
+      "#FEFF99",
+      "#FFFF67",
+      "#CCFF66",
+      "#99FE00",
+      "#EC8EED",
+      "#FF99CB",
+      "#FE349A",
+      "#CC99FE",
+      "#6599FF",
+      "#03CDFF",
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
   useEffect(() => {
     axios
       .get(
@@ -27,9 +46,16 @@ function Bookmark({ name, city }) {
   }, []);
 
   return (
-    <div className="bg-gray-200 shadow-lg rounded-md ">
-      <div className="text-gray-800 mb-3 ">{name}</div>
-      <div className="font-medium text-lg text-gray-500">{city}</div>
+    <div
+      className="shadow-lg rounded-md mb-5 w-2/4 h-36 pt-8 "
+      style={{
+        backgroundImage: `url(${image})`,
+        opacity: 1,
+        color: `${randomColor()}`,
+      }}
+    >
+      <div className=" mb-3 ">{name}</div>
+      <div className="font-medium text-lg ">{city}</div>
     </div>
   );
 }
