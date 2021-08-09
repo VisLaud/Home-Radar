@@ -22,7 +22,7 @@ async function httpAddLocation(req, res) {
     });
   }
   await addALocation(email, location, city);
-  return res.status(200).json({ email, location, city });
+  return res.status(201).json({ email, location, city });
 }
 
 async function httpRegisterUser(req, res) {
